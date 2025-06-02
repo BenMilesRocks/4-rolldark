@@ -80,3 +80,13 @@ Currently Game Masters organise their own calendars for private games, meaning t
 | | I want to be able to see who has purchased tickets to my games |
 | | I want to be able to update game details for private games on the central database |
 | **Invoicing** | I want to be able to automatically generate invoices based on games I have run |
+
+---
+
+## Design
+
+### Database
+
+As Rolldark currently uses multiple solutions to run their business, with many aspects of administration being handled manually; there is a lot of scope for improving efficiency by implementing a relational database. In addition to managing the storefront through the database, I thought a valuable addition would be the ability to manage Game Master invoices through the website's backend. It would solve several pain points for the business, simplifying the payments process and also allowing Game Masters to verify that customers have paid for the games they are playing.
+
+![Database Map](static/assets/documentation/database-map.jpg)
