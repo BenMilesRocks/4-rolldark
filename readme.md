@@ -47,8 +47,9 @@ Currently Game Masters organise their own calendars for private games, meaning t
 
 ### User Stories
 
-| **End User Stories** | |
-|:-------:|:-------:|
+---
+|**End User Stories**| |
+|---|---|
 | **All Users** | I want the site to be responsive to my device |
 | | I want the site to be easy to navigate |
 | | I want to be able to check out quickly and easily if I make a purchase |
@@ -60,9 +61,9 @@ Currently Game Masters organise their own calendars for private games, meaning t
 | | I want the site to remember what games I have shown interest in before |
 | **Frequent User** | I want to be able to find games that fit my schedule and budget |
 | | I want to see what games I am currently signed up for |
-|:-------:|:-------:|
+---
 | **Admin User Stories** | |
-|:-------:|:-------:|
+|---|---|
 | **Game Scheduling** | I want the site to automatically respond to customers, confirming purchases |
 | | I want Game Masters to be emailed simultaneously, notifying them of a new player in their game |
 | | I want to be able to see at a glance how many players have purchased tickets for each game |
@@ -73,14 +74,13 @@ Currently Game Masters organise their own calendars for private games, meaning t
 | **Site Management** | I want to be able to add products to the site easily |
 | | I want games that occured in the past to automatically be removed from the store page |
 | | I want to be able to schedule products and blog posts to display on the site at an assigned date |
-|:-------:|:-------:|
+---
 | **Game Master User Stories** | |
-|:-------:|:-------:|
+|---|---|
 | **Game Scheduling** | I want to see all the games I have scheduled at a glance |
 | | I want to be able to see who has purchased tickets to my games |
 | | I want to be able to update game details for private games on the central database |
 | **Invoicing** | I want to be able to automatically generate invoices based on games I have run |
-
 ---
 
 ## Design
