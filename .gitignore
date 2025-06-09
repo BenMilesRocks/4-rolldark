@@ -2,3 +2,6 @@
 workbench.*
 *.code-workspace
 *.afdesign
+*.sqlite3
+*.pyc
+__pycache__
