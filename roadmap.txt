@@ -1,0 +1,37 @@
+------------------SITE FEATURES-------------------------
+
+----Front End----
+
+----Back End----
+
+ADMIN PORTAL
+
+-Store Admin
+--CRUD products
+
+-Blog Admin
+--CRUD Blog
+--Approve & schedule posts by others
+
+-Invoice verification
+--Link invoices to unique ID on database
+--Add payment date when processed
+
+DM PORTAL
+
+-View scheduled Games
+--Player list
+
+-Edit Games assigned to user
+--Reschedule, add notes
+
+-Invoice directly from Portal
+--Draw payment details directly from database, complete with unique ID for reference
+--See when invoices paid
+
+
+
+------------------NEXT STEPS--------------------------
+
+Create database map
+Create Wireframes
