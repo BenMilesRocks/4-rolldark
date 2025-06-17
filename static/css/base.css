@@ -4,8 +4,10 @@ body {
 
 .navbar-brand {
     width: 15%;
+    max-width: 250px;
 }
 
 #navbar-logo {
     width: 100%;
+    max-width: 250px;
 }
