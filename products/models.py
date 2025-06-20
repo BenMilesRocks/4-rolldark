@@ -22,6 +22,7 @@ class Category(models.Model):
 class Product(models.Model):
     '''Top level Product model'''
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    product_id = models.PositiveIntegerField(null=False, blank=False)
     name = models.CharField(max_length=254)
     description = models.TextField()
     delivery_charge = models.BooleanField(null=True, blank=True, default=False)
