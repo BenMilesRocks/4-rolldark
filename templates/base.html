@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
 
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="/media/rolldark_basic_logo.png" id="navbar-logo"></a>
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="/media/rolldark_basic_logo.png" id="navbar-logo"></a>
                 <!-- Navbar toggler for smaller screens -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -48,12 +48,12 @@
                     <ul class="navbar-nav nav-underline mb-2 mb-lg-0 me-2">
 
                         <li class="nav-item">
-                            <a class="nav-link active nav-underline-opacity-0" aria-current="page" href="#">Home</a>
+                            <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
 
                         <!-- Make these into dropdown links for each section. CLEAN UP CURRENT SITE STRUCTURE! -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Products</a>
+                            <a class="nav-link" href="{% url 'products' %}">Products</a>
                         </li>
 
                     </ul>
