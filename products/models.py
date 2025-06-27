@@ -1,5 +1,4 @@
 '''Products app models'''
-
 from django.db import models
 
 class Category(models.Model):
@@ -25,11 +24,18 @@ class Product(models.Model):
     sku = models.CharField(max_length=254, unique=True, null=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
-    delivery_charge = models.BooleanField(default=False)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     product_live = models.BooleanField(default=False)
+
+    # Product specific fields, to allow sorting
+    date = models.DateField(null=True, blank=True)
+    day = models.CharField(max_length=10, null=True, blank=True)
+    location = models.CharField(max_length=254, null=True, blank=True)
+    delivery_charge = models.BooleanField(default=False)
+    online_game = models.BooleanField(default=True)
+    game_master = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
