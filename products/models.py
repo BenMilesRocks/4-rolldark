@@ -29,13 +29,17 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     product_live = models.BooleanField(default=False)
 
-    # Product specific fields, to allow sorting
-    date = models.DateField(null=True, blank=True)
-    day = models.CharField(max_length=10, null=True, blank=True)
-    location = models.CharField(max_length=254, null=True, blank=True)
+    # Dice specific fields
     delivery_charge = models.BooleanField(default=False)
+
+    # Game Specific fields
+    is_campaign = models.BooleanField(default=False)
     online_game = models.BooleanField(default=True)
     game_master = models.CharField(max_length=254, null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
+    game_dates = models.JSONField(null=True, blank=True)
+    day = models.CharField(max_length=10, null=True, blank=True)
+    location = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
