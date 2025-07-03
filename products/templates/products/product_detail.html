@@ -23,11 +23,10 @@
                 <div class="product-details-container mb-5 mt-md-5 text-light">
 
                     <p class="mb-0">{{ product.name }}</p>
-                    <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                     {% if product.category %}
                         <p class="small mt-1 mb-0">
                             <a class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'products' %}?category={{ product.category.name }}">
-                                <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                {{ product.category.friendly_name }}
                             </a>
                         </p>
                     {% endif %}
@@ -36,7 +35,8 @@
 
                     <form method="post">
 
-                        <select>
+                        <select class="form-select" id="option" onchange="priceFunction()">
+                            <object value="" disabled selected>Please select an option</object>
                             {% if product.is_campaign %}
                                 <option value="campaign_ticket">Campaign Ticket</option>
                             {% endif %}
@@ -49,9 +49,22 @@
                         
                             {% endif %}                            
                         </select>
+                        
+                        <!-- Price indicator - JS inserts price from priceFunction() -->                        
+                        <div id="price-container">
+                            <!-- hidden element sends price to JS -->
+                            <p id="default-price" hidden>{{ product.price }}</p>
+                            <!-- display price based on option -->
+                            <p>
+                                <span id="currency"></span>
+                                <span id="price">Please select an option</span>
+                            </p>
+                            
+                        </div>
+                        
 
 
-                        <button>Add to Cart</button>
+                        <button type="submit" class="btn btn-light">Add to Cart</button>
 
                     </form>
                 </div>
@@ -59,4 +72,33 @@
         </div>
     </div>
     
+{% endblock %}
+
+{% block post_load_js %}
+
+    <script type="text/javascript">
+
+        function priceFunction() {
+            // Get length of options for campaign_ticket
+            let length = document.getElementById("option").options.length - 1;
+            // Get selected value and price
+            let value = document.getElementById("option").value;
+            let price = parseFloat(document.getElementById("default-price").innerText);
+
+            // Display price based on selection
+            if (value == "campaign_ticket")
+                document.getElementById("price").innerHTML = (price * length).toFixed(2);
+            else
+                document.getElementById("price").innerHTML = (price).toFixed(2);
+
+            // Display currency symbol when option selected
+            if (value == "")
+                document.getElementById("currency").innerHTML = "";
+            else
+                document.getElementById("currency").innerHTML = "£";
+
+            
+        }
+    </script>
+
 {% endblock %}
