@@ -1,5 +1,5 @@
 '''Cart app views'''
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.urls import reverse
 from django.contrib import messages
 
@@ -54,3 +54,21 @@ def adjust_cart(request, item_id):
 
     # Redirect to last page visited
     return redirect(reverse('view_cart'))
+
+def remove_from_cart(request, item_id):
+    '''Deletes item from cart'''
+
+    try:
+        # If cart exists in session fetches it, else create empty cart
+        cart = request.session.get('cart', {})
+
+        cart.pop(item_id)
+
+        # Pushes cart back to session
+        request.session['cart'] = cart
+
+        # Redirect to last page visited
+        return HttpResponse(status=200)
+
+    except Exception as e: #pylint: disable=W0612,W0718
+        return HttpResponse(status=500)
