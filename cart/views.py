@@ -1,5 +1,6 @@
 '''Cart app views'''
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib import messages
 
 from products.models import Product
@@ -33,3 +34,23 @@ def add_to_cart(request, item_id):
 
     # Redirect to last page visited
     return redirect(redirect_url)
+
+def adjust_cart(request, item_id):
+    '''Amends the number of items in the cart'''
+
+    # Fetch variables from page
+    quantity = int(request.POST.get('quantity'))
+
+    # If cart exists in session fetches it, else create empty cart
+    cart = request.session.get('cart', {})
+
+    # Update quantity
+    if quantity > 0:
+        cart[item_id] = quantity
+    else:
+        cart.pop(item_id)
+    # Pushes cart back to session
+    request.session['cart'] = cart
+
+    # Redirect to last page visited
+    return redirect(reverse('view_cart'))
