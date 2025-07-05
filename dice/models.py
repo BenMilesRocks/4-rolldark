@@ -21,6 +21,12 @@ class Category(models.Model):
 
 class Dice(models.Model):
     '''Top level Dice model'''
+
+    class Meta:
+        '''Fixes the pluralisation on the Admin page, shows Dice instead of Dices'''
+        verbose_name_plural = 'Dice'
+
+    
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, unique=True, null=True)
     name = models.CharField(max_length=254)
