@@ -2,4 +2,15 @@
 
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Dice
+
+def all_dice(request):
+    """View to return dice page"""
+
+    dice = Dice.objects.all() # pylint: disable=E1101
+
+    context = {
+        'dice': dice,
+    }
+
+    return render(request, 'dice/dice.html', context)
