@@ -34,6 +34,7 @@
                     <p class="mt-3">{{ product.description }}</p>
 
                     <form method="post">
+                        {% csrf_token %}
 
                         <select class="form-select" id="option" onchange="priceFunction()">
                             <object value="" disabled selected>Please select an option</object>
