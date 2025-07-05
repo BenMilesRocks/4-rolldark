@@ -53,7 +53,11 @@
 
                         <!-- Make these into dropdown links for each section. CLEAN UP CURRENT SITE STRUCTURE! -->
                         <li class="nav-item">
-                            <a {% if request.resolver_match.url_name == 'products' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'products' %}">Products</a>
+                            <a {% if request.resolver_match.url_name == 'products' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'products' %}">Games</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a {% if request.resolver_match.url_name == 'dice' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'dice' %}">Dice</a>
                         </li>
 
                     </ul>
