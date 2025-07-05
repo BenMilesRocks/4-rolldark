@@ -36,7 +36,7 @@
                     <form method="post">
                         {% csrf_token %}
 
-                        <select class="form-select" id="option" onchange="priceFunction()">
+                        <select class="form-select" id="option_{{ product.id }}" onchange="priceFunction()">
                             <object value="" disabled selected>Please select an option</object>
                             {% if product.is_campaign %}
                                 <option value="campaign_ticket">Campaign Ticket</option>
@@ -50,6 +50,12 @@
                         
                             {% endif %}                            
                         </select>
+
+                        <!-- Returns quantity & product ID -->
+                        <input class="form-control qty_input" type="number" 
+                            name="quantity" value="1" min="1" max="99" 
+                            data-item_id="{{ product.id }}" 
+                            id="id_qty_{{ product.id }}">
                         
                         <!-- Price indicator - JS inserts price from priceFunction() -->                        
                         <div id="price-container">
@@ -81,9 +87,9 @@
 
         function priceFunction() {
             // Get length of options for campaign_ticket
-            let length = document.getElementById("option").options.length - 1;
+            let length = document.getElementById("option_{{ product.id }}").options.length - 1;
             // Get selected value and price
-            let value = document.getElementById("option").value;
+            let value = document.getElementById("option_{{ product.id }}").value;
             let price = parseFloat(document.getElementById("default-price").innerText);
 
             // Display price based on selection
