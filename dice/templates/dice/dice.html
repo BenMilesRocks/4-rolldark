@@ -38,7 +38,7 @@
                                             {% if dice.category %}
                                                 <p class="small mt-1 mb-0">
                                                     <a class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'dice' %}?category={{ dice.category.name }}">
-                                                        <i class="fas fa-tag mr-1"></i>{{ dice.category.friendly_name }}
+                                                        {{ dice.category.friendly_name }}
                                                     </a>
                                                 </p>
                                             {% endif %}

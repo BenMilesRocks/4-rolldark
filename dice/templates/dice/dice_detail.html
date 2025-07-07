@@ -38,7 +38,7 @@
                         {% csrf_token %}
 
                         <!-- Returns quantity & dice ID -->
-                        <input class="form-control qty_input" type="number" 
+                        <input class="form-control" type="number" 
                             name="quantity" value="1" min="1" max="99" 
                             data-item_id="{{ dice.id }}" 
                             id="id_qty_{{ dice.id }}" onchange="priceFunction()">
