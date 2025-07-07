@@ -33,6 +33,8 @@ def add_dice_to_cart(request, item_id):
     # Pushes cart back to session
     request.session['cart'] = cart
 
+    print(request.session['cart'])
+
     # Redirect to last page visited
     return redirect(redirect_url)
 

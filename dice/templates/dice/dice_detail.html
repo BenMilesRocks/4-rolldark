@@ -34,7 +34,7 @@
                     
                     <p class="mt-3">{{ dice.description }}</p>
 
-                    <form method="post">
+                    <form method="POST" action="{% url 'add_dice_to_cart' dice.id %}">
                         {% csrf_token %}
 
                         <!-- Returns quantity & dice ID -->
@@ -58,6 +58,7 @@
 
 
                         <button type="submit" class="btn btn-light">Add to Cart</button>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
 
                     </form>
                 </div>
