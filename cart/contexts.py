@@ -23,7 +23,7 @@ def cart_contents(request):
         if product.delivery_charge:
             delivery = 2.50
 
-    grand_total = delivery + total
+    grand_total = float(delivery) + float(total)
 
     context = {
         'cart_items': cart_items,
