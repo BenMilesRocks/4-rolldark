@@ -148,18 +148,24 @@
     
     // Update quantity on click
     $('.update-link').click(function(e) {
-        console.log("Update clicked")
+        // Selects the last 'update-form' element and updates it to the quantity displayed
         var form = $(this).prev('.update-form');
+        // Resubmit form to update quantity
         form.submit();
     })
 
     // Remove item and reload on click
     $('.remove-item').click(function(e) {
+        // Post CSRF token to pass Django security
         var csrfToken = "{{ csrf_token }}";
+        // Gets item ID
         var itemId = $(this).attr('id').split('remove_')[1];
+        // Submits item ID to remove_from_cart function in cart/views.py
         var url = `/cart/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken,};
+        // POST submission
         $.post(url, data)
+        // When complete, reload page
          .done(function() {
              location.reload();
          });
