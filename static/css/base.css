@@ -41,3 +41,11 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* --------cart.html-------- */
+
+/* ----Update & Remove links */
+
+.btt-link {
+    cursor: pointer;
+}
