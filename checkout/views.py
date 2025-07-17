@@ -108,3 +108,22 @@ def checkout(request):
         }
 
         return render(request, template, context)
+
+def checkout_success(request, order_number):
+    """
+    Handle successful checkouts
+    """
+    save_info = request.session.get('save_info') #pylint: disable = W0612
+    order = get_object_or_404(Order, order_number=order_number) #pylint: disable = E0602
+    messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+
+    if 'cart' in request.session:
+        del request.session['cart']
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+    }
+    return render(request, template, context)
