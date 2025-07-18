@@ -42,7 +42,7 @@
                             <p class="my-0 small">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            <p class="my-0 small">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -54,9 +54,9 @@
                         <p class="my-0">Grand Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0">${{ total | floatformat:2 }}</p>
-                        <p class="my-0">${{ delivery | floatformat:2 }}</p>
-                        <p class="my-0"><strong>${{ grand_total | floatformat:2 }}</strong></p>
+                        <p class="my-0">£{{ total | floatformat:2 }}</p>
+                        <p class="my-0">£{{ delivery | floatformat:2 }}</p>
+                        <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
                     </div>
                 </div>
             </div>
@@ -71,22 +71,22 @@
                     <!-- Fieldsets to group form fields, using Crispy fields formatting -->
                     <fieldset class="rounded px-3 mb-5">
 
-                        <legend class="fieldset-label small px-2 w-auto">Customer Details</legend>
-                        {{ order_form.full_name }}
-                        {{ order_form.email }}
+                        <legend class="fieldset-label small px-2">Customer Details</legend>
+                        <p>{{ order_form.full_name }}</p>
+                        <p>{{ order_form.email }}</p>
 
                     </fieldset>
                     <fieldset class="rounded px-3 mb-5">
 
-                        <legend class="fieldset-label small px-2 w-auto">Delivery Information</legend>
-
-                        {{ order_form.phone_number }}
-                        {{ order_form.country }}
-                        {{ order_form.postcode }}
-                        {{ order_form.town_or_city }}
-                        {{ order_form.street_address1 }}
-                        {{ order_form.street_address2 }}
-                        {{ order_form.county }}
+                        <legend class="fieldset-label small px-2">Delivery Information</legend>
+                        
+                        <p>{{ order_form.country }}</p>
+                        <p>{{ order_form.postcode }}</p>
+                        <p>{{ order_form.town_or_city }}</p>
+                        <p>{{ order_form.street_address1 }}</p>
+                        <p>{{ order_form.street_address2 }}</p>
+                        <p>{{ order_form.county }}</p>
+                        <p>{{ order_form.phone_number }}</p>
 
                         <div class="form-check form-check-inline float-right mr-0">
                             <!-- Checks user authentication, displays login or signup if not -->
@@ -134,7 +134,7 @@
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+							<span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
 
 						</p>
 
