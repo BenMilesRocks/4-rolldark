@@ -16,7 +16,7 @@ var stripe = Stripe(stripePublicKey);
 
 // Set appearance and options
 const appearance = {
-    theme: 'stripe'
+    theme: 'flat'
 };
 
 const options = {
