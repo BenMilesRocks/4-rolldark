@@ -16,14 +16,16 @@ var stripe = Stripe(stripePublicKey);
 
 // Set appearance and options
 const appearance = {
-  theme: 'flat',
-  variables: { colorPrimaryText: '#262626' }
+    theme: 'stripe'
 };
+
 const options = {
-  layout: {
-    type: 'tabs',
-    defaultCollapsed: false,
-  }
+    layout: {
+        type: 'accordion',
+        defaultCollapsed: false,
+        radios: false,
+        spacedAccordionItems: true
+    }
 };
 
 // Mount card element to div
