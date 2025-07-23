@@ -79,14 +79,35 @@ def adjust_cart(request, item_id):
     # Fetch variables from page
     quantity = int(request.POST.get('quantity'))
 
+    # Check for ticket options
+    ticket_option = None
+    if 'ticket_option' in request.POST:
+        ticket_option = request.POST['ticket_option']
+
     # If cart exists in session fetches it, else create empty cart
     cart = request.session.get('cart', {})
 
-    # Update quantity
-    if quantity > 0:
-        cart[item_id] = quantity
+    # Check if product being altered has a ticket option
+    if ticket_option:
+
+        if quantity > 0:
+            # If items left in cart, update quantity
+            cart[item_id]['game_by_ticket_option'][ticket_option] = quantity
+        else:
+            # If quantity == 0, delete item
+            del cart[item_id]['game_by_ticket_option'][ticket_option]
+
+            # If no other tickets for this game exist, delete item_id from cart
+            if not cart[item_id]['game_by_ticket_option']:
+                cart.pop(item_id)
+
     else:
-        cart.pop(item_id)
+        # Update quantity
+        if quantity > 0:
+            cart[item_id] = quantity
+        else:
+            cart.pop(item_id)
+
     # Pushes cart back to session
     request.session['cart'] = cart
 
@@ -97,10 +118,21 @@ def remove_from_cart(request, item_id):
     '''Deletes item from cart'''
 
     try:
+        # Check for ticket options
+        ticket_option = None
+        if 'ticket_option' in request.POST:
+            ticket_option = request.POST['ticket_option']
+
         # If cart exists in session fetches it, else create empty cart
         cart = request.session.get('cart', {})
 
-        cart.pop(item_id)
+        if ticket_option:
+            del cart[item_id]['game_by_ticket_option'][ticket_option]
+            # If no other tickets for this game exist, delete item_id from cart
+            if not cart[item_id]['game_by_ticket_option']:
+                cart.pop(item_id)
+        else:
+            cart.pop(item_id)
 
         # Pushes cart back to session
         request.session['cart'] = cart
